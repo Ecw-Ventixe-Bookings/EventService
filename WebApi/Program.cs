@@ -21,6 +21,7 @@ var app = builder.Build();
 
 app.MapOpenApi();
 
+app.UseCors(x => x.AllowAnyHeader().AllowAnyOrigin().AllowAnyMethod());
 app.UseHttpsRedirection();
 
 app.UseAuthentication();
