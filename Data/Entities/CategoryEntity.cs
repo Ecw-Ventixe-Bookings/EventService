@@ -1,4 +1,4 @@
-﻿namespace WebApi.Data.Entities;
+namespace Data.Entities;
 
 public class CategoryEntity
 {

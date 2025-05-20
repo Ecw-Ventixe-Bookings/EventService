@@ -1,9 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
+using Data.Entities;
+using Microsoft.EntityFrameworkCore;
 
-namespace WebApi.Data.Entities;
+namespace Service.Dtos;
 
-public class EventEntity
+public class EventDto
 {
     public Guid Id { get; set; }
 
@@ -19,18 +20,11 @@ public class EventEntity
 
     public DateTime EndDateTime { get; set; }
 
-    [Required]
-    public string VenueAddress { get; set; } = null!;
-
-    public int? MaxAttendees { get; set; }
-
-    public int? CurrentAttendeesCount { get; set; }
-
     [Precision(18, 2)]
     public decimal? TicketPrice { get; set; }
 
 
     public Guid CategoryId { get; set; }
-    public CategoryEntity? Category { get; set; }
+    
+    public Guid VenueId { get; set; }
 }
-
