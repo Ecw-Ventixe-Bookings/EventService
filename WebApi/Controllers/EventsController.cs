@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Service.Dtos;
 using Service.Interfaces;
 using Service.Models;
 
@@ -30,6 +31,15 @@ namespace WebApi.Controllers
             return eventResult.Success 
                 ? Ok(eventResult) 
                 : NotFound(eventResult);
+        }
+
+        [HttpPost("/")]
+        public async Task<IActionResult> CreateEvent(EventDto dto)
+        {
+            var result = await _service.CreateAsync(dto);
+            return result.Success
+                ? Ok(result)
+                : BadRequest(result);
         }
     }
 }

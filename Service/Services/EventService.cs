@@ -1,5 +1,6 @@
 using Data.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Migrations.Operations;
 using Service.Dtos;
 using Service.Factories;
 using Service.Interfaces;
@@ -14,7 +15,19 @@ public class EventService(IEventRepository eventRepository, IVenueRepository ven
 
     public async Task<ServiceResult> CreateAsync(EventDto dto)
     {
-        return new ServiceResult() { Success = true };
+        if (dto.VenueId == Guid.Empty)
+        {
+            //  Add a default venue ID here            
+        }
+
+        if (dto.CategoryId == Guid.Empty)
+        {
+            // Add a default category ID here
+        }
+
+        var entity = EventFactory.Create(dto);
+        var result = await _eventRepository.CreateAsync(entity);
+        return new ServiceResult() { Success = result.Success, ErrorMessage = result.ErrorMessage };
     }
 
     public async Task<ServiceResult<EventModel>> GetByIdAsync(Guid id)
