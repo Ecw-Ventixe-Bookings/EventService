@@ -15,16 +15,6 @@ public class EventService(IEventRepository eventRepository, IVenueRepository ven
 
     public async Task<ServiceResult> CreateAsync(EventDto dto)
     {
-        if (dto.VenueId == Guid.Empty)
-        {
-            //  Add a default venue ID here            
-        }
-
-        if (dto.CategoryId == Guid.Empty)
-        {
-            // Add a default category ID here
-        }
-
         var entity = EventFactory.Create(dto);
         var result = await _eventRepository.CreateAsync(entity);
         return new ServiceResult() { Success = result.Success, ErrorMessage = result.ErrorMessage };

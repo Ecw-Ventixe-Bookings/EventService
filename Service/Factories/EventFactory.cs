@@ -14,9 +14,11 @@ public static class EventFactory
             Id = Guid.NewGuid(),
             Title = dto.Title,
             Description = dto.Description,
+            Image = dto.Image,
             StartDateTime = dto.StartDateTime,
             EndDateTime = dto.EndDateTime,
             TicketPrice = dto.TicketPrice,
+            TotalTickets = dto.TotalTickets,
             CategoryId = dto.CategoryId,
             VenueId = dto.VenueId,
         };
@@ -27,8 +29,10 @@ public static class EventFactory
             Id = entity.Id,
             Title = entity.Title,
             Description = entity.Description,
+            Image = entity.Image,
             StartDateTime = entity.StartDateTime,
             EndDateTime = entity.EndDateTime,
-            TicketPrice = entity.TicketPrice
+            TicketPrice = entity.TicketPrice,
+            TotalTickets = entity.TotalTickets,
         };
 }
