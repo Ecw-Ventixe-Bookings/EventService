@@ -7,6 +7,7 @@ using Data.Interfaces;
 using Data.Repositories;
 using Service.Interfaces;
 using Service.Services;
+using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -51,6 +52,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 var app = builder.Build();
 
 app.MapOpenApi();
+app.MapScalarApiReference("/api/docs");
 
 app.UseCors(x => x.AllowAnyHeader().AllowAnyOrigin().AllowAnyMethod());
 app.UseHttpsRedirection();
